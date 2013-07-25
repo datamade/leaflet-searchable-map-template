@@ -1,9 +1,15 @@
 # Leaflet Searchable Map Template
-__under construction__
 
-You want to put your data on a searchable, filterable map. This is a free, open source tool to help you do it.
+__Under construction__
 
-###Initial goals
+You want to put a Socrata dataset on a searchable, filterable map.
+
+[Demo](http://derekeder.github.io/leaflet-searchable-map-template/)
+
+[![Leaflet Searchable Map Template screenshot](http://derekeder.github.io/leaflet-searchable-map-template/images/leaflet-searchable-map-template.png)](http://derekeder.github.io/leaflet-searchable-map-template/)
+
+
+### Initial goals
 
 - [x] Load in a Socrata JSON file and display points on a map
 - [ ] Make use of the SODA SQL queries to add search filters
