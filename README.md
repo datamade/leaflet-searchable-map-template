@@ -5,7 +5,7 @@ You want to put a Socrata dataset on a searchable, filterable map.
 
 [Demo](http://derekeder.github.io/leaflet-searchable-map-template/)
 
-[![Leaflet Searchable Map Template screenshot](http://derekeder.github.io/leaflet-searchable-map-template/images/leaflet-searchable-map-template.png)](http://derekeder.github.io/leaflet-searchable-map-template/)
+[![Leaflet Searchable Map Template screenshot](http://derekeder.github.io/leaflet-searchable-map-template/img/leaflet-searchable-map-template.png)](http://derekeder.github.io/leaflet-searchable-map-template/)
 
 
 ### Initial goals
