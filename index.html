@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <title>Leaflet Searchable Map Template</title>
+    <title>Public Pools in Chicago</title>
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content='' name='description' />
     <meta content='' name='author' />
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/bootstrap.spacelab.min.css"/>
+    <link rel="stylesheet" href="styles/bootstrap.cerulean.min.css"/>
     <link rel="stylesheet" href="styles/bootstrap-responsive.min.css"/>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -30,14 +30,14 @@
     <div class='navbar'>
       <div class='navbar-inner'>
         <div class='container'>
-          <a class='brand' href='/'>Leaflet Searchable Map Template</a>
+          <a class='brand' href='/'>Public Pools in Chicago</a>
         </div>
       </div>
     </div>
     <div class='container-fluid'>
       <div class='row-fluid'>
         <div class='span4'>
-          <p>List of locations in Chicago where alternative vehicle fuels are available.</p>
+          <p>Its hot. You should go for a swim. <br />Find a pool close to you.</p>
           <div class='well'>
             <h4>
               Address <small>(<a id='find_me' href='#'>find me</a>)</small>
@@ -94,7 +94,7 @@
         }).resize();
         
         $(function() {
-          queue().defer(d3.json, "https://data.cityofchicago.org/resource/iq3c-68ew.json").await(ready);
+          queue().defer(d3.json, "https://data.cityofchicago.org/resource/y7qa-tvqx.json?$select=facility_name,park,location,facility_type&$where=facility_name='POOL%20(OUTDOOR)' OR facility_name='POOL%20(INDOOR)'").await(ready);
 
           $('#reset').click(function(){
             $.address.parameter('address','');

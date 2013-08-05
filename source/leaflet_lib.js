@@ -8,8 +8,8 @@ var LeafletLib = {
 
     searchRadius: 805,
     locationScope:      "Chicago",      //geographical area appended to all address searches
-    recordName:         "fueling station",       //for showing number of results
-    recordNamePlural:   "fueling stations",
+    recordName:         "outdoor pool",       //for showing number of results
+    recordNamePlural:   "outdoor pools",
     markers: [ ],
 
     initialize: function(element, features, centroid, zoom) {
@@ -24,11 +24,21 @@ var LeafletLib = {
         LeafletLib.map.attributionControl.setPrefix('');
         L.Icon.Default.imagePath = "img";
 
+        var poolIcon = L.icon({
+          iconUrl: "img/swimming-indoor.png",
+          iconSize: [ 32, 37 ],
+          shadowUrl: "img/square-shadow.png",
+          shadowSize: [ 40, 26 ],
+          shadowAnchor: [ 10, 5 ],
+          popupAnchor: [ 0, -10 ]
+        });
+
         if(typeof features != "undefined"){
           for(var m=0;m<features.length;m++){
-            var pt = new L.LatLng( features[m]['latitude'], features[m]['longitude'] );
-            var popup = "<h3>" + features[m]['street_address'] + "</h3><p>" + features[m]['station_name'] + "<br />" + features[m]['access_days_time'] + "</p>";
-            new L.Marker( pt ).addTo( LeafletLib.map ).bindPopup(popup);
+            var pt = new L.LatLng( features[m]['location']['latitude'], features[m]['location']['longitude'] );
+            var url = "http://www.chicagoparkdistrict.com/parks/" + LeafletLib.convertToSlug(features[m]['park']) + "-park/";
+            var popup = "<h4><a href='" + url + "'>" + features[m]['park'] + "</a></h4><p>" + features[m]['facility_type'] + "<br /><a href='" + url + "'>More info &raquo;</a></p>";
+            new L.Marker( pt, { icon: poolIcon } ).addTo( LeafletLib.map ).bindPopup(popup);
             LeafletLib.addBoundedPoint( pt );
           }
         }
@@ -246,6 +256,13 @@ var LeafletLib = {
         x1 = x1.replace(rgx, '$1' + ',' + '$2');
       }
       return x1 + x2;
-    }
+    },
+
+    //converts a text in to a URL slug
+    convertToSlug: function(text) {
+      if (text == undefined) return '';
+      text = text.substring(0, text.indexOf('(') -1);
+      return (text+'').replace(/ /g,'-').replace(/[^\w-]+/g,'');
+    },
 
 }
